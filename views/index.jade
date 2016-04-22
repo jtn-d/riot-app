@@ -2,4 +2,6 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  div!= tagContent
+
+  script(src='../tags/welcome.tag', type='riot/tag')
