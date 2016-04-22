@@ -1,3 +1,4 @@
 <welcome>
-	<p>Welcome to {opts.title}</p>
+	<h1>Welcome to {opts.title}</h1>
+	<a href="/main">Main</a>
 </welcome>

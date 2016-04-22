@@ -1,7 +1,27 @@
-extends layout
+doctype html
+html
+	head
+		title= 'riot-app'
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		div!= tagContent
 
-block content
-  h1= title
-  div!= tagContent
+		script(src='../tags/welcome.tag', type='riot/tag')
+		script(src='../tags/main.tag', type='riot/tag')
 
-  script(src='../tags/welcome.tag', type='riot/tag')
+		script(src='riot/riot+compiler.js')
+		script.
+			riot.compile(function() {
+				riot.route.base('/')
+				riot.mount('*')
+				riot.route.start(true)
+			})
+			riot.route('/', function() {
+				console.log('/')
+				riot.mount('body div', 'welcome', {title: 'Express'})
+			})
+			riot.route('/main', function() {
+				console.log('/main')
+				riot.mount('body div', 'main', {message: 'browser'})
+			})
+

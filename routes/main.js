@@ -1,11 +1,11 @@
 var express = require('express');
 var riot = require('riot');
-var welcome = require('../public/tags/welcome.tag');
+var main = require('../public/tags/main.tag');
 var router = express.Router();
 
-/* GET home page. */
+/* GET users listing. */
 router.get('/', function(req, res, next) {
-	var tag = riot.render(welcome, {title: 'Express'});
+	var tag = riot.render(main, {message: 'server'});
   res.render('index', {tagContent: tag});
 });
 
