@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-		"serve": "nodemon ./bin/www"
+    "serve": "parallelshell 'npm run copy' 'npm run riot:watch' 'nodemon ./bin/www'",
+    "riot:compile": "parallelshell 'riot -e css app public/styles.css' 'riot --exclude css app public/index.js'",
+    "riot:watch": "parallelshell 'riot -w -e css app public/styles.css' 'riot -w --exclude css app public/index.js'",
+    "copy": "cp app/main.css public"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -15,5 +18,9 @@
     "morgan": "~1.6.1",
     "riot": "^2.3.18",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+		"parallelshell": "^2.0.0",
+    "nodemon": "^1.9.1"
   }
 }

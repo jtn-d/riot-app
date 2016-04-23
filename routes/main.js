@@ -1,6 +1,6 @@
 var express = require('express');
 var riot = require('riot');
-var main = require('../public/tags/main.tag');
+var main = require('../app/tags/main.tag');
 var router = express.Router();
 
 /* GET users listing. */

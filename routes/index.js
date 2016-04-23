@@ -1,6 +1,6 @@
 var express = require('express');
 var riot = require('riot');
-var welcome = require('../public/tags/welcome.tag');
+var welcome = require('../app/tags/welcome.tag');
 var router = express.Router();
 
 /* GET home page. */

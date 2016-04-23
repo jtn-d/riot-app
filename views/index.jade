@@ -2,12 +2,13 @@ doctype html
 html
 	head
 		title= 'riot-app'
-		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='styles.css')
+		link(rel='stylesheet', href='main.css')
+
 	body
 		div!= tagContent
 
-		script(src='../tags/welcome.tag', type='riot/tag')
-		script(src='../tags/main.tag', type='riot/tag')
+		script(src='index.js', type='riot/tag')
 
 		script(src='riot/riot+compiler.js')
 		script.
@@ -17,11 +18,9 @@ html
 				riot.route.start(true)
 			})
 			riot.route('/', function() {
-				console.log('/')
 				riot.mount('body div', 'welcome', {title: 'Express'})
 			})
 			riot.route('/main', function() {
-				console.log('/main')
 				riot.mount('body div', 'main', {message: 'browser'})
 			})
 
