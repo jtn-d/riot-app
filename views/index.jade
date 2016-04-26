@@ -1,26 +1,14 @@
 doctype html
 html
-	head
-		title= 'riot-app'
-		link(rel='stylesheet', href='styles.css')
-		link(rel='stylesheet', href='main.css')
+  head
+    title= 'riot-app'
+    link(rel='stylesheet', href='styles.css')
+    link(rel='stylesheet', href='main.css')
 
-	body
-		div!= view
+  body
+    div!= view
 
-		script(src='index.js', type='riot/tag')
-
-		script(src='riot/riot+compiler.js')
-		script.
-			riot.compile(function() {
-				riot.route.base('/')
-				riot.mount('*')
-				riot.route.start(true)
-			})
-			riot.route('/', function() {
-				riot.mount('body div', 'welcome', {title: 'Express'})
-			})
-			riot.route('/main', function() {
-				riot.mount('body div', 'main', {message: 'browser'})
-			})
+    script(src='index.js', type='riot/tag')
+    script(src='riot/riot+compiler.js')
+    script(src='router.js')
 
