@@ -1,1 +1,3 @@
 node_modules
+tests/unit/results/*
+tests/e2e/results/*
