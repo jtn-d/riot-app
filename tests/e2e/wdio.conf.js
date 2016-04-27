@@ -86,7 +86,7 @@ exports.config = {
     // Test reporter for stdout.
     // The following are supported: dot (default), spec and xunit
     // see also: http://webdriver.io/guide/testrunner/reporters.html
-    reporter: 'spec',
+    reporters: ['dot', 'junit'],
 
     reporterOptions: {
       outputDir: './tests/e2e/results/'

@@ -36,6 +36,7 @@
     "parallelshell": "^2.0.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
+    "wdio-junit-reporter": "0.0.2",
     "wdio-mocha-framework": "^0.2.12",
     "webdriverio": "^4.0.5"
   }

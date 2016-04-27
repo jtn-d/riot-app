@@ -7,7 +7,7 @@ describe('loaded', function() {
   it('should have title when loaded', function() {
     return browser
       .url('/')
-      .getTitle().then(function(value) {
+      .getTitle(function(value) {
         expect(value).to.be.equal('riot-app');
       });
   });
