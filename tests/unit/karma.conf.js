@@ -16,6 +16,7 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-chrome-launcher',
+      'karma-ie-launcher',
       'karma-riot',
       'karma-sinon-chai',
       'karma-junit-reporter'
@@ -69,7 +70,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'IE'],
 
 
     // Continuous Integration mode

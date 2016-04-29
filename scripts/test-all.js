@@ -29,20 +29,27 @@ selenium.install({
   if (err) {
     console.log(err);
   } else {
-    selenium.start(function(err, child) {
+    exec('npm run test:unit', function(err, stdout, stderr) {
       if (err) {
-        console.log(err);
+        console.log('error' + err);
+        process.exit(1);
       } else {
-        selenium.child = child;
-
-        exec('npm run test:e2e', function(err, stdout, stderr) {
+        selenium.start(function(err, child) {
           if (err) {
-            console.log('error' + err);
-            process.exit(1);
+            console.log(err);
           } else {
-            console.log(stdout);
-            console.log(stderr);
-            selenium.child.kill();
+            selenium.child = child;
+
+            exec('npm run test:e2e', function(err, stdout, stderr) {
+              if (err) {
+                console.log('error' + err);
+                process.exit(1);
+              } else {
+                console.log(stdout);
+                console.log(stderr);
+                selenium.child.kill();
+              }
+            });
           }
         });
       }
