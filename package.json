@@ -8,8 +8,8 @@
     "test:unit": "karma start tests/unit/karma.conf.js --single-run",
     "test:e2e": "wdio tests/e2e/wdio.conf.js",
     "serve": "parallelshell \"npm run riot:watch\" \"nodemon ./bin/www\"",
-    "riot:compile": "parallelshell \"riot -e css tags public/styles.css\" \"riot --exclude css tags public/index.js\"",
-    "riot:watch": "parallelshell \"riot -w -e css tags public/styles.css\" \"riot -w --exclude css tags public/index.js\""
+    "riot:compile": "parallelshell \"riot -e css tags public/styles.css\" \"riot --exclude css tags public/tags.js\"",
+    "riot:watch": "parallelshell \"riot -w -e css tags public/styles.css\" \"riot -w --exclude css tags public/tags.js\""
   },
   "dependencies": {
     "body-parser": "~1.13.2",
