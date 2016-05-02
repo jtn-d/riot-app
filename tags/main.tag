@@ -1,24 +1,26 @@
 <main>
-	<h1>Main page</h1>
-	<p>{opts.message}</p>
-	
-	<button onclick="{back}">Back</button>
+  <h1>Main page</h1>
+  <p>{opts.message}</p>
 
-	<style scoped>
-		:scope { display: block; }
+  <button onclick="{back}">Back</button>
 
-		h1 {
-			font-style: italic;
-		}
+  <style scoped>
+      :scope { display: block; }
 
-		p {
-			color: gray;
-		}
-	</style>
+      h1 {
+          font-style: italic;
+      }
 
-	<script>
-		back() {
-			riot.route('/');
-		}
-	</script>
+      p {
+          color: gray;
+      }
+  </style>
+
+  <script>
+    var route = require('riot-route')
+
+    back() {
+      route('/');
+    }
+  </script>
 </main>

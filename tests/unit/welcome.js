@@ -1,3 +1,5 @@
+var riot = require('riot')
+
 describe('<welcome>', function() {
   var tag, title, link
   var opts = {title: 'Testing'}

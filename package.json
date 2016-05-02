@@ -7,9 +7,12 @@
     "test": "node scripts/test-all.js",
     "test:unit": "karma start tests/unit/karma.conf.js --single-run",
     "test:e2e": "wdio tests/e2e/wdio.conf.js",
-    "serve": "parallelshell \"npm run riot:watch\" \"nodemon ./bin/www\"",
-    "riot:compile": "parallelshell \"riot -e css tags public/styles.css\" \"riot --exclude css tags public/tags.js\"",
-    "riot:watch": "parallelshell \"riot -w -e css tags public/styles.css\" \"riot -w --exclude css tags public/tags.js\""
+    "build": "parallelshell \"npm run riot:css\" \"npm run browserify\"",
+    "serve": "parallelshell \"npm run riot:watch:css\" \"npm run watchify\" \"nodemon ./bin/www\"",
+    "riot:css": "riot -e css tags public/styles.css",
+    "riot:watch:css": "riot -w -e css tags public/styles.css",
+    "browserify": "browserify -t riotify public/router.js > public/bundle.js",
+    "watchify": "watchify -t riotify public/router.js -o public/bundle.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -22,8 +25,10 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "browserify": "^13.0.0",
     "chai": "^3.5.0",
     "karma": "^0.13.22",
+    "karma-browserify": "^5.0.4",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.3",
     "karma-coverage": "^0.5.5",
@@ -31,15 +36,16 @@
     "karma-junit-reporter": "^0.4.2",
     "karma-mocha": "^0.2.2",
     "karma-mocha-reporter": "^2.0.2",
-    "karma-riot": "^1.0.1",
     "karma-sinon-chai": "^1.2.0",
     "lolex": "^1.4.0",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1",
     "parallelshell": "^2.0.0",
+    "riotify": "^1.0.0",
     "selenium-standalone": "^5.1.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
+    "watchify": "^3.7.0",
     "wdio-junit-reporter": "0.0.2",
     "wdio-mocha-framework": "^0.2.12",
     "webdriverio": "^4.0.5"

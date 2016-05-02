@@ -10,17 +10,17 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'riot', 'sinon-chai'],
+    frameworks: ['mocha', 'sinon-chai', 'browserify'],
 
     plugins: [
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-chrome-launcher',
       'karma-ie-launcher',
-      'karma-riot',
       'karma-sinon-chai',
       'karma-junit-reporter',
-      'karma-coverage'
+      'karma-coverage',
+      'karma-browserify'
     ],
 
 
@@ -39,9 +39,14 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'tags/*.tag': ['riot', 'coverage']
+      'tags/*.tag': ['browserify', 'coverage'],
+      'tests/unit/*.js': ['browserify']
     },
 
+    browserify: {
+      transform: [ 'riotify' ],
+      debug: true
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

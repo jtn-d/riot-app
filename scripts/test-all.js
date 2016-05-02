@@ -10,7 +10,7 @@ selenium.install({
     chrome: {
       // check for more recent versions of chrome driver here:
       // https://chromedriver.storage.googleapis.com/index.html
-      version: '2.9',
+      version: '2.21',
       arch: process.arch,
       baseURL: 'https://chromedriver.storage.googleapis.com'
     },
