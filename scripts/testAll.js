@@ -29,22 +29,25 @@ selenium.install({
   if (err) {
     console.log(err);
   } else {
+    console.log('run test:unit');
     exec('npm run test:unit', function(err, stdout, stderr) {
       if (err) {
         console.log('error' + err);
         process.exit(1);
       } else {
+        console.log('test:unit done');
         selenium.start(function(err, child) {
           if (err) {
             console.log(err);
           } else {
             selenium.child = child;
-
+            console.log('run test:e2e');
             exec('npm run test:e2e', function(err, stdout, stderr) {
               if (err) {
                 console.log('error' + err);
                 process.exit(1);
               } else {
+                console.log('test:e2e done');
                 console.log(stdout);
                 console.log(stderr);
                 selenium.child.kill();

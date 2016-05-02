@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "node scripts/test-all.js",
+    "test": "node scripts/testAll.js",
     "test:unit": "karma start tests/unit/karma.conf.js --single-run",
     "test:e2e": "wdio tests/e2e/wdio.conf.js",
     "build": "parallelshell \"npm run riot:css\" \"npm run browserify\"",

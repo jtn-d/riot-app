@@ -3067,6 +3067,7 @@ route('/main', function() {
 
 route.base('/')
 route.start(true)
+
 },{"../tags/main.tag":5,"../tags/welcome.tag":6,"riot":3,"riot-route":2}],5:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag2('main', '<h1>Main page</h1> <p>{opts.message}</p> <button onclick="{back}">Back</button>', 'main,[riot-tag="main"],[data-is="main"]{ display: block; } main h1,[riot-tag="main"] h1,[data-is="main"] h1{ font-style: italic; } main p,[riot-tag="main"] p,[data-is="main"] p{ color: gray; }', '', function(opts) {
