@@ -19,7 +19,8 @@ module.exports = function(config) {
       'karma-ie-launcher',
       'karma-riot',
       'karma-sinon-chai',
-      'karma-junit-reporter'
+      'karma-junit-reporter',
+      'karma-coverage'
     ],
 
 
@@ -38,17 +39,25 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'tags/*.tag': ['riot']
+      'tags/*.tag': ['riot', 'coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha', 'junit'],
+    reporters: ['mocha', 'junit', 'coverage'],
 
     junitReporter: {
       outputDir: 'tests/unit/results'
+    },
+
+    coverageReporter: {
+      dir: 'tests/unit/coverage',
+      reporters: [
+        { type: 'html', subdir: 'html' },
+        { type: 'cobertura'}
+      ]
     },
 
     // web server port
