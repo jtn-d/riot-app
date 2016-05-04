@@ -1,2 +1,2 @@
-main,[riot-tag="main"],[data-is="main"]{ display: block; } main h1,[riot-tag="main"] h1,[data-is="main"] h1{ font-style: italic; } main p,[riot-tag="main"] p,[data-is="main"] p{ color: gray; }
+main,[riot-tag="main"],[data-is="main"]{ display: block; } main h1,[riot-tag="main"] h1,[data-is="main"] h1{ font-style: italic; } main p,[riot-tag="main"] p,[data-is="main"] p{ color: blue; }
 welcome,[riot-tag="welcome"],[data-is="welcome"]{ display: block; } welcome h1,[riot-tag="welcome"] h1,[data-is="welcome"] h1{ font-style: italic; }

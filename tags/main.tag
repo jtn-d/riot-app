@@ -5,15 +5,15 @@
   <button onclick="{back}">Back</button>
 
   <style scoped>
-      :scope { display: block; }
+    :scope { display: block; }
 
-      h1 {
-          font-style: italic;
-      }
+    h1 {
+        font-style: italic;
+    }
 
-      p {
-          color: gray;
-      }
+    p {
+        color: blue;
+    }
   </style>
 
   <script>

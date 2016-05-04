@@ -8,11 +8,12 @@
     "test:unit": "karma start tests/unit/karma.conf.js --single-run",
     "test:e2e": "wdio tests/e2e/wdio.conf.js",
     "build": "parallelshell \"npm run riot:css\" \"npm run browserify\"",
-    "serve": "parallelshell \"npm run riot:watch:css\" \"npm run watchify\" \"nodemon ./bin/www\"",
+    "serve": "parallelshell \"npm run riot:watch:css\" \"npm run watchify\" \"nodemon ./bin/www\" \"npm run browser-sync\"",
     "riot:css": "riot -e css tags public/styles.css",
     "riot:watch:css": "riot -w -e css tags public/styles.css",
     "browserify": "browserify -t riotify public/router.js > public/bundle.js",
-    "watchify": "watchify -t riotify public/router.js -o public/bundle.js"
+    "watchify": "watchify -t riotify public/router.js -o public/bundle.js",
+    "browser-sync": "browser-sync start --proxy http://localhost:3000 --files public/* --reload-delay 1000"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -25,6 +26,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "browser-sync": "^2.12.5",
     "browserify": "^13.0.0",
     "chai": "^3.5.0",
     "karma": "^0.13.22",
