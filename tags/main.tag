@@ -20,8 +20,7 @@
 
   <script>
     var route = require('riot-route')
-    require('es6-promise').polyfill()
-    require('isomorphic-fetch')
+    var repos = require('../services/repos')
 
     this.results = opts.results
 
@@ -32,17 +31,14 @@
     this.on('mount', function() {
       // right after the tag is mounted on the page
       if (process.browser) {
-        fetch('https://api.github.com/users/octocat/repos')
-          .then(function(response) {
-            if (response.status >= 400) {
-              throw new Error("Bad response from server");
-            }
-            return response.json();
-          })
+        repos.get('octocat')
           .then(function(repos) {
             this.results = repos
             this.update()
-          }.bind(this));
+          }.bind(this))
+          .catch(function(error) {
+            console.error(error);
+          })
       }
     })
 

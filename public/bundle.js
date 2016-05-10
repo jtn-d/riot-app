@@ -4562,13 +4562,33 @@ route('/main', function() {
 route.base('/')
 route.start(true)
 
-},{"../tags/main.tag":9,"../tags/welcome.tag":10,"riot":6,"riot-route":5}],9:[function(require,module,exports){
+},{"../tags/main.tag":10,"../tags/welcome.tag":11,"riot":6,"riot-route":5}],9:[function(require,module,exports){
+require('es6-promise').polyfill()
+require('isomorphic-fetch')
+
+module.exports = {
+  get: function(user) {
+    return new Promise((resolve, reject) => {
+      fetch('https://api.github.com/users/' + user + '/repos')
+        .then(function(response) {
+          if (response.status !== 200) {
+            reject({status: response.status, statusText: response.statusText});
+          }
+          return response.json();
+        }).then(function(repos) {
+          resolve(repos);
+        }).catch(function(error) {
+          reject(error);
+        });
+    })
+  }
+}
+},{"es6-promise":1,"isomorphic-fetch":2}],10:[function(require,module,exports){
 (function (process){
 var riot = require('riot');
 module.exports = riot.tag2('main', '<h1>Main page</h1> <p>{opts.message}</p> <li each="{result in this.results}">{result.full_name}</li> <button onclick="{back}">Back</button>', 'main,[riot-tag="main"],[data-is="main"]{ display: block; } main h1,[riot-tag="main"] h1,[data-is="main"] h1{ font-style: italic; } main p,[riot-tag="main"] p,[data-is="main"] p{ color: blue; }', '', function(opts) {
     var route = require('riot-route')
-    require('es6-promise').polyfill()
-    require('isomorphic-fetch')
+    var repos = require('../services/repos')
 
     this.results = opts.results
 
@@ -4579,17 +4599,14 @@ module.exports = riot.tag2('main', '<h1>Main page</h1> <p>{opts.message}</p> <li
     this.on('mount', function() {
 
       if (process.browser) {
-        fetch('https://api.github.com/users/octocat/repos')
-          .then(function(response) {
-            if (response.status >= 400) {
-              throw new Error("Bad response from server");
-            }
-            return response.json();
-          })
+        repos.get('octocat')
           .then(function(repos) {
             this.results = repos
             this.update()
-          }.bind(this));
+          }.bind(this))
+          .catch(function(error) {
+            console.error(error);
+          })
       }
     })
 
@@ -4598,8 +4615,9 @@ module.exports = riot.tag2('main', '<h1>Main page</h1> <p>{opts.message}</p> <li
       console.info(eventName)
     })
 });
+
 }).call(this,require('_process'))
-},{"_process":3,"es6-promise":1,"isomorphic-fetch":2,"riot":6,"riot-route":5}],10:[function(require,module,exports){
+},{"../services/repos":9,"_process":3,"riot":6,"riot-route":5}],11:[function(require,module,exports){
 var riot = require('riot');
 module.exports = riot.tag2('welcome', '<h1>Welcome to {opts.title}</h1> <a href="/main">Main</a>', 'welcome,[riot-tag="welcome"],[data-is="welcome"]{ display: block; } welcome h1,[riot-tag="welcome"] h1,[data-is="welcome"] h1{ font-style: italic; }', '', function(opts) {
 });
