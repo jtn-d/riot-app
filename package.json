@@ -22,8 +22,8 @@
     "es6-promise": "^3.1.2",
     "express": "~4.13.1",
     "isomorphic-fetch": "^2.2.1",
-    "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "pug": "^0.1.0",
     "riot": "^2.3.18",
     "serve-favicon": "~2.3.0"
   },
